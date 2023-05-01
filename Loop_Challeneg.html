@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+  Loop Challenge
+*/
+      let myAdmins = ["Ahmed", "Osama", "Sayed", "Stop", "Samera"];
+      let myEmployees = [
+        "Amgad",
+        "Samah",
+        "Ameer",
+        "Omar",
+        "Othman",
+        "Amany",
+        "Samia",
+        "Anwar",
+      ];
+      let numberOfAdmins = 0;
+      let cards = ``;
+
+      getNumberOfAdmins: for (let i = 0; i < myAdmins.length; i++) {
+        if (myAdmins[i] === "Stop") break;
+        numberOfAdmins++;
+      }
+
+      loopInAdmins: for (let i = 0; i < numberOfAdmins; i++) {
+        let team = [];
+
+        loopInEmployeees: for (let j = 0; j < myEmployees.length; j++) {
+          if (myEmployees[j].startsWith(myAdmins[i][0])) {
+            team.push(myEmployees[j]);
+          }
+        }
+
+        let teamParagraphs = ``;
+
+        for (let t = 0; t < team.length; t++) {
+          teamParagraphs += `<p>-${team[t]}</p>`;
+        }
+
+        cards += `
+            <div>
+              The Admin for Team ${i + 1} is ${myAdmins[i]}
+              <h3>Team Members:</h3>
+              ${teamParagraphs}
+            </div>
+            <hr>
+          `;
+      }
+
+      document.write(`<div>We have ${numberOfAdmins} Admins</div><hr>`);
+      document.write(cards);
+    </script>
+  </body>
+</html>
